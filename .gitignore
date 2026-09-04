@@ -8,3 +8,4 @@
 .wget-hsts
 .Xauthority
 token.txt
+odoo-lab/aws-s3-secret.yaml
