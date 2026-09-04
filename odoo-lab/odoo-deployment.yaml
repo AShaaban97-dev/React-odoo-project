@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: odoo
+  namespace: odoo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: odoo
+  template:
+    metadata:
+      labels:
+        app: odoo
+    spec:
+      containers:
+        - name: odoo
+          image: ashaaban97/odoo-s3:latest
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 8069
+
+          volumeMounts:
+            - name: odoo-config
+              mountPath: /etc/odoo/odoo.conf
+              subPath: odoo.conf
+
+            - name: extra-addons
+              mountPath: /mnt/extra-addons
+
+      volumes:
+        - name: odoo-config
+          configMap:
+            name: odoo-config
+
+        - name: extra-addons
+          emptyDir: {}

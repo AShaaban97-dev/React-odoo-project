@@ -1,0 +1,10 @@
+.bash_history
+.cache/
+.npm/
+.kube/
+.vagrant.d/
+.viminfo
+.lesshst
+.wget-hsts
+.Xauthority
+token.txt
